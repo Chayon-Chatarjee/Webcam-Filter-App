@@ -1,0 +1,148 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Webcam Filter App</title>
+    76% of storage used … 
+<style>
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background: linear-gradient(90deg, #90d1ca, #129990);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.container {
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  padding: 30px;
+  width: 90%;
+  max-width: 600px;
+  margin-top: 50px;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px,
+    rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+}
+
+h1 {
+  font-size: 40px;
+}
+
+#filter-name {
+  background-color: #129990;
+  padding: 10px;
+  font-size: 20px;
+  box-shadow: rgb(85, 91, 255) 0px 0px 0px 3px, rgb(31, 193, 27) 0px 0px 0px 6px,
+    rgb(255, 217, 19) 0px 0px 0px 9px;
+  margin: 30px auto;
+  width: 400px;
+}
+
+#filter-canvas {
+  box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px,
+    rgba(6, 24, 44, 0.65) 0px 4px 6px -1px,
+    rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
+  width: 400px;
+  height: 300px;
+  border-radius: 5px;
+}
+</style>
+
+    
+</head>
+
+<body>
+    <div class="container">
+        <h1>Live Webcam Filter App</h1>
+        <p>Tap or click on the video to apply the filter.</p>
+        <div id="filter-name">Filter: None</div>
+        <canvas id="filter-canvas"></canvas>
+    </div>
+
+<script>
+
+let canvas = document.getElementById("filter-canvas");
+let filterName = document.getElementById("filter-name");
+let context = canvas.getContext("2d");
+
+let currentFilter = 0;
+
+// Filters
+
+let filters = [
+    { name: "None", style: "none" },
+    { name: "Grayscale", style: "grayscale(100%)" },
+    { name: "Invert", style: "invert(100%)" },
+    { name: "Sepia", style: "sepia(100%)" },
+    { name: "Blur", style: "blur(5px)" },
+    { name: "Brightness+", style: "brightness(150%)" },
+    { name: "Brightness-", style: "brightness(50%)" },
+    { name: "Contrast+", style: "contrast(200%)" },
+    { name: "Contrast-", style: "contrast(50%)" },
+    { name: "Saturate+", style: "saturate(200%)" },
+    { name: "Saturate-", style: "saturate(50%)" },
+    { name: "Hue Rotate 45°", style: "hue-rotate(45deg)" },
+    { name: "Hue Rotate 90°", style: "hue-rotate(90deg)" },
+    { name: "Hue Rotate 180°", style: "hue-rotate(180deg)" },
+    { name: "Warm Tone", style: "sepia(60%) saturate(150%) hue-rotate(-20deg)" },
+    { name: "Cool Tone", style: "sepia(30%) saturate(120%) hue-rotate(180deg)" },
+    { name: "Vintage", style: "sepia(70%) contrast(90%) brightness(85%)" },
+    { name: "High Contrast", style: "contrast(250%) brightness(120%)" },
+    { name: "Soft", style: "brightness(110%) contrast(90%) saturate(80%)" },
+    { name: "Dreamy", style: "blur(3px) brightness(120%) saturate(150%)" },
+    { name: "Mono Blue", style: "grayscale(100%) hue-rotate(200deg)" },
+    { name: "Night Vision", style: "brightness(150%) contrast(200%) hue-rotate(90deg)" },
+    { name: "Washed Out", style: "contrast(70%) brightness(120%) saturate(50%)" },
+    { name: "Deep Shadow", style: "brightness(60%) contrast(150%)" }
+];
+
+
+function startWebcam() {
+    navigator.mediaDevices.getUserMedia({ video: true })
+        .then(function (source) {
+            let video = document.createElement('video');
+            video.srcObject = source;
+            video.play();
+
+            // When the video loaded
+            video.addEventListener('loadeddata', function () {
+                canvas.width = video.videoWidth;
+                canvas.height = video.videoHeight;
+                drawToCanvas(video);
+            })
+
+            // add event listener to swap filter
+            canvas.addEventListener("click", function () {
+                changeFilter();
+            })
+
+        }).catch(function (error) {
+            alert("Webcam not found", error);
+        })
+
+    function drawToCanvas(video) {
+        context.filter = filters[currentFilter].style;
+        context.drawImage(video, 0, 0, canvas.width, canvas.height)
+
+        requestAnimationFrame(function () {
+            drawToCanvas(video)
+        });
+    }
+
+    function changeFilter() {
+        currentFilter = (currentFilter + 1) % filters.length;
+        filterName.innerHTML = "Filter Name: " + filters[currentFilter].name;
+    }
+
+}
+startWebcam()
+</script>
+</body>
+
+</html>
+
