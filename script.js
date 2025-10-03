@@ -101,4 +101,5 @@ download.addEventListener("click", function(){
     a.href = picture;
     a.download = "Your Filtered Image.png";
     a.click();
+
 })
