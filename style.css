@@ -1,0 +1,122 @@
+body{
+    background: linear-gradient( 90deg, #110161,#2d2dee,#453ff0,#7958fb, #453ff0, #2d2dee, #110161);
+}
+.container{
+    width: 640px;
+    background: rgb(0, 0, 0, 0.2);
+    border-radius: 10px;
+    margin: 50px auto;
+    padding-bottom: 50px;
+    box-shadow: rgba(179, 216, 16, 0.25) 0px 54px 55px, rgba(151, 240, 103, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+.title{
+    color: #fff;
+    text-align: center;
+    padding-top: 10px;
+    font-size: 25px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: bold;
+}
+.hr{
+    width: 80%;
+    margin: auto;
+    font-weight: bold;
+}
+.h3{
+    color: #e5dcdc;
+    align-items: center;
+    padding: 10px 30px;
+    font-size: 18px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+#filter{
+    color: #fff;
+    text-align: center;
+    font-size: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+#filter-part{
+    width: 50%;
+    margin: auto;
+    border:  2px solid #4D3DC5;
+    box-shadow: rgba(150, 145, 157, 0.56) 0px 22px 70px 4px;
+}
+.camera-Instructions{
+    color: #fff;
+    text-align: center;
+    font-size: 25px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: bold;
+}
+.camera{
+    width: 600px;
+    height: 500px;
+    margin: auto;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+#canvas{
+    width: 600px;
+    height: 500px;
+    margin: auto;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+.btn{
+    text-align: center;
+    margin: 20px 0px ;
+    
+}
+.btn button{
+    width: 250px;
+    font-size: 30px;
+    padding: 10px 20px;
+    margin-top: 20px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    background: #62933d;
+    transition: ease-in 0.3s;
+    font-weight: bold;
+    color: #fff;
+}
+.btn button:hover{
+    font-size: 30px;
+    padding: 10px 20px;
+    border-radius: 10px;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: inset 250px 0 0 0 #4a6139 ;
+    color: #fff;
+
+}
+
+.snapshot-instructions{
+    color: #fff;
+    text-align: center;
+    font-size: 25px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: bold;
+    margin-top: 20px;
+}
+.snapshot{
+    width: 600px;
+    height: 500px;
+    margin: auto;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
